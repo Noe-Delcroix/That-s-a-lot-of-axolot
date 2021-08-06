@@ -17,14 +17,25 @@ public class WorldGenerator {
         GROUND_SIZE=groundSize;
     }
 
+    public int terrainHeight(float x){
+        return (int)(AVERAGE_GROUND_HEIGHT+noise.eval(x/GROUND_SIZE,0)*GROUND_DIFF);
+    }
+
+    public int topHeight(float x){
+        return (int)(4+noise.eval(x/10,0)*2);
+    }
+
+    public boolean isCave(float x,float y){
+        return noise.eval(x/10,y/5)>-0.3 && noise.eval(x/100,y/100)>0.3;
+    }
+
     public Block getBlock(float x,float y){
 
-        int terrainHeight=(int)(AVERAGE_GROUND_HEIGHT+noise.eval(x/GROUND_SIZE,0)*GROUND_DIFF);
-        int topHeight=(int)(4+noise.eval(x/10,0)*2);
+
 
         if (y>0){
-            if (y>terrainHeight){
-                if (y>terrainHeight+topHeight){
+            if (y>this.terrainHeight(x) && !isCave(x,y)){
+                if (y>this.terrainHeight(x)+this.topHeight(x)){
                     return Blocks.get("stone");
                 }else{
                     return Blocks.get("sand");
