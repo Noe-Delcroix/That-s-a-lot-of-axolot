@@ -19,6 +19,9 @@ public class World extends PGraphics{
         Blocks.init();
     }
 
+    public Player getPlayer() {
+        return player;
+    }
 
     public void drawingLoop(Main main) {
         this.tick(main);
