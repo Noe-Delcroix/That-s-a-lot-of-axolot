@@ -7,6 +7,8 @@ public class World extends PGraphics{
     private WorldGenerator generator;
     private Player player;
 
+
+
     public World(){
         generator=new WorldGenerator();
         player=new Player(0,0);
@@ -15,16 +17,16 @@ public class World extends PGraphics{
     }
 
 
-    public void drawingLoop() {
+    public void drawingLoop(Main main) {
         this.tick();
-        this.render();
+        this.render(main);
     }
 
     public void tick(){
 
     }
 
-    public void render(){
-        background(255,0,0,0);
+    public void render(Main main){
+        main.background(88, 148, 211,255);
     }
 }
