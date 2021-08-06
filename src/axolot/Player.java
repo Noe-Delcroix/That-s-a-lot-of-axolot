@@ -40,4 +40,20 @@ public class Player extends PGraphics {
     public PVector screenPosToWorldPos(float screenX,float screenY) {
         return new PVector(screenX / zoom + pos.x, screenY / zoom + pos.y);
     }
+
+    public float getZoom() {
+        return zoom;
+    }
+
+    public void setZoom(float zoom) {
+        this.zoom = zoom;
+    }
+
+    public void changeZoom(int a){
+        if(a==-1){
+            zoom++;
+        }else{
+            zoom--;
+        }
+    }
 }

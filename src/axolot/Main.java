@@ -1,6 +1,7 @@
 package axolot;
 
 import processing.core.PApplet;
+import processing.event.MouseEvent;
 
 import java.awt.*;
 
@@ -29,7 +30,10 @@ public class Main extends PApplet {
     public void draw(){
         translate(width/2,height/2);
         this.world.drawingLoop(this);
-        //noLoop();
+    }
+
+    public void mouseWheel(MouseEvent event) {
+        world.getPlayer().changeZoom(event.getCount());
     }
 
 }
