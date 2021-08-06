@@ -13,7 +13,7 @@ public class World extends PGraphics{
 
 
     public World(){
-        generator=new WorldGenerator();
+        generator=new WorldGenerator(30,5,20);
         player=new Player(0,0);
 
         Blocks.init();
@@ -27,6 +27,8 @@ public class World extends PGraphics{
 
     public void tick(Main main){
         player.tick(main);
+
+        player.pos.x+=0.5;
     }
 
     public void render(Main main){
