@@ -1,13 +1,17 @@
 package axolot;
 
-public class Player {
+import processing.core.PApplet;
+import processing.core.PGraphics;
+import processing.core.PVector;
 
-    Vector pos;
-    Vector vel;
+public class Player extends PGraphics {
+
+    PVector pos;
+    PVector vel;
 
     public Player(float originX,float originY){
-        pos=new Vector(originX,originY);
-        vel=new Vector(0,0);
+        pos=new PVector(originX,originY);
+        vel=new PVector(0,0);
     }
 
     public void tick(){

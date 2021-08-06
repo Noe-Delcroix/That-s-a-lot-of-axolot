@@ -3,8 +3,10 @@ package axolot;
 import processing.core.PApplet;
 
 public class Main extends PApplet {
+    public World world;
+
     public static void main(String[] args) {
-        PApplet.main("axolot.Game",args);
+        PApplet.main("axolot.Main",args);
     }
 
     public void settings(){
@@ -12,10 +14,10 @@ public class Main extends PApplet {
     }
 
     public void setup(){
-        World.init();
+        world=new World();
     }
 
     public void draw(){
-        World.draw();
+        this.world.drawingLoop();
     }
 }
