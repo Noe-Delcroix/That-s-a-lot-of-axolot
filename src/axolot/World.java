@@ -21,13 +21,12 @@ public class World extends PGraphics{
 
 
     public void drawingLoop(Main main) {
-        this.tick();
+        this.tick(main);
         this.render(main);
     }
 
-    public void tick(){
-        player.pos.x+=0.01;
-        player.pos.y+=0.1;
+    public void tick(Main main){
+        player.tick(main);
     }
 
     public void render(Main main){
