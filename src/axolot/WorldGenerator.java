@@ -31,8 +31,6 @@ public class WorldGenerator {
 
     public Block getBlock(float x,float y){
 
-
-
         if (y>0){
             if (y>this.terrainHeight(x) && !isCave(x,y)){
                 if (y>this.terrainHeight(x)+this.topHeight(x)){
