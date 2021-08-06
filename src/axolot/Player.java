@@ -16,7 +16,7 @@ public class Player extends PGraphics {
         zoom=10;
     }
 
-    public void tick(){
+    public void tick(Main main){
 
     }
 
