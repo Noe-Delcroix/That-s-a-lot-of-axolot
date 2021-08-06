@@ -26,24 +26,20 @@ public class World extends PGraphics{
     }
 
     public void tick(){
-        //player.pos.x++;
+        player.pos.x+=0.01;
+        player.pos.y+=0.1;
     }
 
     public void render(Main main){
         main.background(88, 148, 211,255);
 
-        PVector topleft=player.screenPosToWorldPos(-Main.WIDTH/2,-Main.HEIGHT/2);
-        PVector bottomright=player.screenPosToWorldPos(Main.WIDTH/2,Main.HEIGHT/2);
+        PVector topleft=player.screenPosToWorldPos(-Main.width/2,-Main.height/2);
+        PVector bottomright=player.screenPosToWorldPos(Main.width/2,Main.height/2);
 
-
-        for (int y=(int)topleft.y;y<(int)bottomright.y;y++){
-            for (int x=(int)topleft.x;x<(int)bottomright.x;x++){
-
-
+        for (int y=(int)Math.floor(topleft.y);y<(int)Math.ceil(bottomright.y);y++){
+            for (int x=(int)Math.floor(topleft.x);x<(int)Math.ceil(bottomright.x);x++){
                 Block b=generator.getBlock(x,y);
                 Color c=b.getColor();
-
-                System.out.println(c);
                 PVector pos=player.worldPosToScreenPos(x,y);
                 main.fill(c.getRed(),c.getGreen(),c.getBlue(),c.getAlpha());
                 main.noStroke();
