@@ -2,29 +2,34 @@ package axolot;
 
 import processing.core.PApplet;
 
+import java.awt.*;
+
 public class Main extends PApplet {
     public World world;
 
-    public static final int WIDTH=800;
-    public static final int HEIGHT=450;
+    public static int width;
+    public static int height;
 
     public static void main(String[] args) {
         PApplet.main("axolot.Main",args);
     }
 
     public void settings(){
-        size(WIDTH,HEIGHT);
-        //fullScreen();
+        fullScreen();
+
+        width=(int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+        height=(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+        System.out.println("Screen Size : w="+width+"h= "+height);
     }
 
     public void setup(){
         world=new World();
-        translate(WIDTH/2,HEIGHT/2);
     }
 
     public void draw(){
+        translate(width/2,height/2);
         this.world.drawingLoop(this);
-        noLoop();
+        //noLoop();
     }
 
 }
