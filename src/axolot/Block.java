@@ -5,17 +5,15 @@ import java.awt.*;
 public class Block {
 
     private boolean hitbox;
+    private Texture texture;
 
-    //temp
-    private Color color;
-
-    public Block(boolean hitbox,Color color){
+    public Block(boolean hitbox,Texture texture){
         this.hitbox=hitbox;
-        this.color=color;
+        this.texture=texture;
 
     }
 
-    public Color getColor() {
-        return color;
+    public Texture getTexture() {
+        return texture;
     }
 }

@@ -4,19 +4,22 @@ import processing.core.PGraphics;
 import processing.core.PVector;
 
 import java.awt.*;
+import java.io.File;
 
 public class World extends PGraphics{
 
     private WorldGenerator generator;
     private Player player;
 
+    private Texture background;
 
-
-    public World(){
+    public World(Main main){
         generator=new WorldGenerator(30,5,20);
         player=new Player(0,0);
 
-        Blocks.init();
+        background=new Texture(main,"ressources"+ File.separator+"background.png");
+
+        Blocks.init(main);
     }
 
     public Player getPlayer() {
@@ -33,7 +36,8 @@ public class World extends PGraphics{
     }
 
     public void render(Main main){
-        main.background(88, 148, 211,255);
+        main.background(86, 178, 239);
+        //background.render(main,-Main.width/2,-Main.height/2,Main.width,Main.height);
 
         PVector topleft=player.screenPosToWorldPos(-Main.width/2,-Main.height/2);
         PVector bottomright=player.screenPosToWorldPos(Main.width/2,Main.height/2);
@@ -41,13 +45,11 @@ public class World extends PGraphics{
         for (int y=(int)Math.floor(topleft.y);y<(int)Math.ceil(bottomright.y);y++){
             for (int x=(int)Math.floor(topleft.x);x<(int)Math.ceil(bottomright.x);x++){
                 Block b=generator.getBlock(x,y);
-                Color c=b.getColor();
                 PVector pos=player.worldPosToScreenPos(x,y);
-                main.fill(c.getRed(),c.getGreen(),c.getBlue(),c.getAlpha());
-                main.noStroke();
-                main.rect(pos.x,pos.y,player.zoom,player.zoom);
-
-                //System.out.println("x="+x+" y="+y);
+                Texture texture=b.getTexture();
+                if (texture!=null){
+                    texture.render(main,pos.x,pos.y,player.getZoom(),player.getZoom());
+                }
             }
         }
     }

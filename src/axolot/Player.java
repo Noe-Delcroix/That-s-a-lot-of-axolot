@@ -21,6 +21,7 @@ public class Player extends PGraphics {
             if (main.mouseButton == LEFT){
                 pos.x+=(main.pmouseX-main.mouseX)/zoom;
                 pos.y+=(main.pmouseY-main.mouseY)/zoom;
+                if (pos.y<0)pos.y=0;
             }
         }
     }
@@ -49,11 +50,21 @@ public class Player extends PGraphics {
         this.zoom = zoom;
     }
 
-    public void changeZoom(int a){
+    public void changeZoom(int a,Main main){
+        PVector previous=this.screenPosToWorldPos(main.mouseX-Main.width/2,main.mouseY-Main.height/2);
         if(a==-1){
-            zoom++;
+            if (zoom<Math.min(Main.width,Main.height)){
+                zoom*=1.1;
+            }
         }else{
-            zoom--;
+            if (zoom>10){
+                zoom*=0.9;
+            }
+
         }
+        PVector next=this.screenPosToWorldPos(main.mouseX-Main.width/2,main.mouseY-Main.height/2);
+        this.pos.x+=(previous.x-next.x);
+        this.pos.y+=(previous.y-next.y);
+
     }
 }

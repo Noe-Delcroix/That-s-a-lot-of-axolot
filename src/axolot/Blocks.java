@@ -7,13 +7,13 @@ import java.util.Map;
 public class Blocks {
     public static Map<String,Block> blocks;
 
-    public static void init(){
+    public static void init(Main main){
         blocks=new HashMap<String,Block>();
 
-        blocks.put("air",new Block(false,new Color(0,0,0,0)));
-        blocks.put("water",new Block(false,new Color(0,255,255,128)));
-        blocks.put("sand",new Block(true,new Color(255,255,0)));
-        blocks.put("stone",new Block(true,new Color(95, 95, 95)));
+        blocks.put("air",new Block(false,null));
+        blocks.put("water",new Block(false,Texture.forBlock(main,"water")));
+        blocks.put("sand",new Block(true,Texture.forBlock(main,"sand")));
+        blocks.put("stone",new Block(true,Texture.forBlock(main,"stone")));
     }
 
     public static Block get(String id){
