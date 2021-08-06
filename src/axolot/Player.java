@@ -17,7 +17,12 @@ public class Player extends PGraphics {
     }
 
     public void tick(Main main){
-
+        if (main.mousePressed){
+            if (main.mouseButton == LEFT){
+                pos.x+=(main.pmouseX-main.mouseX)/zoom;
+                pos.y+=(main.pmouseY-main.mouseY)/zoom;
+            }
+        }
     }
 
     public float getX(){

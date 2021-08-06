@@ -27,8 +27,6 @@ public class World extends PGraphics{
 
     public void tick(Main main){
         player.tick(main);
-
-        player.pos.x+=0.5;
     }
 
     public void render(Main main){
