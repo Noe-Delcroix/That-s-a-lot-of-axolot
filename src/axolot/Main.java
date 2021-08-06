@@ -10,6 +10,7 @@ public class Main extends PApplet {
     }
 
     public void settings(){
+        //size(1600,900);
         fullScreen();
     }
 
@@ -18,6 +19,7 @@ public class Main extends PApplet {
     }
 
     public void draw(){
-        this.world.drawingLoop();
+        this.world.drawingLoop(this);
     }
+
 }
