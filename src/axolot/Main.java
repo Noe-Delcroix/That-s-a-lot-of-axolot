@@ -2,7 +2,7 @@ package axolot;
 
 import processing.core.PApplet;
 
-public class Game extends PApplet {
+public class Main extends PApplet {
     public static void main(String[] args) {
         PApplet.main("axolot.Game",args);
     }
@@ -12,10 +12,10 @@ public class Game extends PApplet {
     }
 
     public void setup(){
-
+        World.init();
     }
 
     public void draw(){
-
+        World.draw();
     }
 }
