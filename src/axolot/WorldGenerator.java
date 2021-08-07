@@ -29,6 +29,10 @@ public class WorldGenerator {
         return noise.eval(x/10,y/5)>-0.3 && noise.eval(x/100,y/100)>0.3;
     }
 
+    public float getRandomTexture(int x,int y){
+        return (float)((noise.eval(x,y)+1)/2);
+    }
+
     public Block getBlock(float x,float y){
 
         if (y>0){
