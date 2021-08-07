@@ -20,13 +20,13 @@ public class Main extends PApplet {
     public void settings(){
         noSmooth();
 
-        /*fullScreen();
+        fullScreen();
         width=(int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-        height=(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();*/
+        height=(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-        width=960;
+        /*width=960;
         height=540;
-        size(width,height);
+        size(width,height);*/
 
 
 
