@@ -7,21 +7,24 @@ import java.util.List;
 public class Block {
 
     private boolean hitbox;
+    private String id;
     private List<Texture> textures;
 
-    public Block(boolean hitbox){
+    public Block(boolean hitbox,String id){
         this.hitbox=hitbox;
         textures=new ArrayList<Texture>();
+        this.id=id;
     }
 
-    public Block(boolean hitbox,Texture texture){
-        this(hitbox);
+    public Block(boolean hitbox,String id,Texture texture){
+        this(hitbox,id);
         textures.add(texture);
     }
 
-    public Block(boolean hitbox,List<Texture> textures){
+    public Block(boolean hitbox,String id,List<Texture> textures){
         this.hitbox=hitbox;
         this.textures=textures;
+        this.id=id;
     }
 
     public Texture getTexture() {
