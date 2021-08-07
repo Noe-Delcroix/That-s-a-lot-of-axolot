@@ -18,10 +18,11 @@ public class Main extends PApplet {
     }
 
     public void settings(){
+        noSmooth();
+
         /*fullScreen();
         width=(int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-        height=(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-        */
+        height=(int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();*/
 
         width=960;
         height=540;
@@ -33,6 +34,7 @@ public class Main extends PApplet {
     }
 
     public void setup(){
+        frameRate(60);
         world=new World(this);
     }
 
@@ -41,7 +43,12 @@ public class Main extends PApplet {
         translate(width/2,height/2);
         this.world.drawingLoop(this);
 
-        System.out.println("Fps:"+frameRate+" Renders:"+renderCount);
+        fill(255,255,0);
+        stroke(0,0,0);
+        textAlign(LEFT,TOP);
+        textSize(30);
+        text("Fps:"+(int)frameRate+" Renders:"+renderCount,-width/2,-height/2);
+
 
     }
 

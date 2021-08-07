@@ -36,8 +36,9 @@ public class World extends PGraphics{
     }
 
     public void render(Main main){
-        main.background(86, 178, 239);
-        //background.render(main,-Main.width/2,-Main.height/2,Main.width,Main.height);
+        //main.background(86, 178, 239);
+        background.render(main,-Main.width/2,-Main.height/2,Main.width,Main.height);
+        //main.clear();
 
         PVector topleft=player.screenPosToWorldPos(-Main.width/2,-Main.height/2);
         PVector bottomright=player.screenPosToWorldPos(Main.width/2,Main.height/2);
