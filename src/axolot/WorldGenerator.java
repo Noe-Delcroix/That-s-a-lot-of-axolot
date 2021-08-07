@@ -13,6 +13,8 @@ public class WorldGenerator {
     private final double KELP_GROWTH=0.8; //entre 0 et 1
 
 
+    private final double CORAL_AMOUNT=0.6; //entre 0 et 1
+
     public WorldGenerator(){
         noise=new OpenSimplexNoise();
     }
@@ -53,6 +55,8 @@ public class WorldGenerator {
                 }else{
                     return Blocks.get("kelp_top");
                 }
+            }else if ( noise.eval(x*10,y*10)<CORAL_AMOUNT*2-1 && under==Blocks.get("stone")) {
+                return Blocks.get("coral");
             }
 
 

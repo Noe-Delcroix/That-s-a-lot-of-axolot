@@ -14,6 +14,7 @@ public class Blocks {
         blocks=new HashMap<String,Block>();
 
         List<Texture> textures=new ArrayList<Texture>();
+        Texture texture;
 
         String path="ressources"+ File.separator+"blocks"+File.separator;
 
@@ -27,7 +28,7 @@ public class Blocks {
         textures.add(new Texture(main,path+"sand2.png"));
         textures.add(new Texture(main,path+"sand3.png"));
         textures.add(new Texture(main,path+"sand4.png"));
-        for(Texture texture : textures)texture.addTexture(main,water);
+        for(Texture t : textures)t.addTexture(main,water);
         blocks.put("sand",new Block(true,"sand",textures));
 
         textures=new ArrayList<Texture>();
@@ -35,12 +36,24 @@ public class Blocks {
         textures.add(new Texture(main,path+"stone2.png"));
         textures.add(new Texture(main,path+"stone3.png"));
         textures.add(new Texture(main,path+"stone4.png"));
-        for(Texture texture : textures)texture.addTexture(main,water);
+        for(Texture t : textures)t.addTexture(main,water);
         blocks.put("stone",new Block(true,"stone",textures));
 
 
-        blocks.put("kelp",new Block(false,"kelp",new Texture(main,1,1,0,200,0,255)));
-        blocks.put("kelp_top",new Block(false,"kelp_top",new Texture(main,1,1,0,150,0,255)));
+        textures=new ArrayList<Texture>();
+        textures.add(new Texture(main,path+"kelp.png"));
+        textures.add(new Texture(main,path+"kelp2.png"));
+        textures.add(new Texture(main,path+"kelp3.png"));
+        for(Texture t : textures)t.addTexture(main,water);
+        blocks.put("kelp",new Block(true,"kelp",textures));
+
+        texture=new Texture(main,path+"kelp_top.png");
+        texture.addTexture(main,water);
+        blocks.put("kelp_top",new Block(false,"kelp_top",texture));
+
+        texture=new Texture(main,path+"coral.png");
+        texture.addTexture(main,water);
+        blocks.put("coral",new Block(false,"coral",texture));
     }
 
     public static Block get(String id){
