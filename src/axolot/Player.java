@@ -13,7 +13,7 @@ public class Player extends PGraphics {
     public Player(float originX,float originY){
         pos=new PVector(originX,originY);
         vel=new PVector(0,0);
-        zoom=10;
+        zoom=40;
     }
 
     public void tick(Main main){
@@ -57,7 +57,7 @@ public class Player extends PGraphics {
                 zoom*=1.1;
             }
         }else{
-            if (zoom>10){
+            if (zoom>30){
                 zoom*=0.9;
             }
 
