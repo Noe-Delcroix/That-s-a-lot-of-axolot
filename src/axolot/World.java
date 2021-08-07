@@ -26,6 +26,10 @@ public class World extends PGraphics{
         return player;
     }
 
+    public WorldGenerator getGenerator() {
+        return generator;
+    }
+
     public void drawingLoop(Main main) {
         this.tick(main);
         this.render(main);
@@ -46,10 +50,9 @@ public class World extends PGraphics{
         for (int y=(int)Math.floor(topleft.y);y<(int)Math.ceil(bottomright.y);y++){
             for (int x=(int)Math.floor(topleft.x);x<(int)Math.ceil(bottomright.x);x++){
                 Block b=generator.getBlock(x,y);
-                PVector pos=player.worldPosToScreenPos(x,y);
-                Texture texture=b.getTexture();
+                Texture texture=b.getTexture(this,x,y);
                 if (texture!=null){
-                    texture.render(main, pos.x, pos.y, player.getZoom(), player.getZoom());
+                    texture.render(main, this,x, y, (float)(player.getZoom()*1.01), (float)(player.getZoom()*1.01));
                 }
             }
         }
