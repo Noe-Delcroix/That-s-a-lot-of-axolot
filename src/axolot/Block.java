@@ -24,6 +24,10 @@ public class Block {
         this.dataValue=dataValue;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public void addTexture(Texture texture){
         textures.add(texture);
     }
