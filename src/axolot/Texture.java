@@ -42,9 +42,9 @@ public class Texture extends PGraphics {
         Main.renderCount++;
     }
 
-    public void render(Main main, World world,int worldX,int worldY, float sizeX,float sizeY){
+    public void render(Main main, World world,float worldX,float worldY, float sizeX,float sizeY){
         PVector pos=world.getPlayer().worldPosToScreenPos(worldX,worldY);
-        main.image(image,(int)pos.x,(int)pos.y,sizeX,sizeY);
+        main.image(image,(int)pos.x,(int)pos.y,sizeX*world.getPlayer().getZoom(),sizeY*world.getPlayer().getZoom());
         Main.renderCount++;
     }
 
