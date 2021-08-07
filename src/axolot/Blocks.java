@@ -1,6 +1,7 @@
 package axolot;
 
 import java.awt.*;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,10 +11,12 @@ public class Blocks {
     public static void init(Main main){
         blocks=new HashMap<String,Block>();
 
+        String path="ressources"+File.separator+"blocks"+File.separator;
+
         blocks.put("air",new Block(false,null));
-        blocks.put("water",new Block(false,Texture.forBlock(main,"water")));
-        blocks.put("sand",new Block(true,Texture.forBlock(main,"sand")));
-        blocks.put("stone",new Block(true,Texture.forBlock(main,"stone")));
+        blocks.put("water",new Block(false,new Texture(main,path+"water"+".png")));
+        blocks.put("sand",new Block(true,new Texture(main,path+"sand"+".png")));
+        blocks.put("stone",new Block(true,new Texture(main,path+"stone"+".png")));
     }
 
     public static Block get(String id){

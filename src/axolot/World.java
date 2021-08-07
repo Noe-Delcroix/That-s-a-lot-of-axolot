@@ -49,7 +49,7 @@ public class World extends PGraphics{
                 PVector pos=player.worldPosToScreenPos(x,y);
                 Texture texture=b.getTexture();
                 if (texture!=null){
-                    texture.render(main,pos.x,pos.y,player.getZoom(),player.getZoom());
+                    texture.render(main, pos.x, pos.y, player.getZoom(), player.getZoom());
                 }
             }
         }
