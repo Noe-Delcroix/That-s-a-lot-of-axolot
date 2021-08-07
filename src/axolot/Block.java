@@ -8,23 +8,24 @@ public class Block {
 
     private boolean hitbox;
     private String id;
+    private int dataValue;
+
     private List<Texture> textures;
 
     public Block(boolean hitbox,String id){
+        this(hitbox,id,0);
+    }
+
+
+    public Block(boolean hitbox,String id,int dataValue){
         this.hitbox=hitbox;
         textures=new ArrayList<Texture>();
         this.id=id;
+        this.dataValue=dataValue;
     }
 
-    public Block(boolean hitbox,String id,Texture texture){
-        this(hitbox,id);
+    public void addTexture(Texture texture){
         textures.add(texture);
-    }
-
-    public Block(boolean hitbox,String id,List<Texture> textures){
-        this.hitbox=hitbox;
-        this.textures=textures;
-        this.id=id;
     }
 
     public Texture getTexture() {
@@ -35,5 +36,9 @@ public class Block {
     public Texture getTexture(World world,int x,int y) {
         if (textures.size()==0)return null;
         return textures.get((int)(world.getGenerator().getRandomTexture(x,y)*textures.size()));
+    }
+
+    public List<Texture> getTextures(){
+        return this.textures;
     }
 }

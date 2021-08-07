@@ -12,8 +12,7 @@ public class WorldGenerator {
     private final double KELP_AMOUNT=0.5; //entre 0 et 1
     private final double KELP_GROWTH=0.8; //entre 0 et 1
 
-
-    private final double CORAL_AMOUNT=0.6; //entre 0 et 1
+    private final double CORAL_AMOUNT=1; //entre 0 et 1
 
     public WorldGenerator(){
         noise=new OpenSimplexNoise();
@@ -31,9 +30,14 @@ public class WorldGenerator {
         return noise.eval(x/10,y/5)>-0.3 && noise.eval(x/100,y/100)>0.3;
     }
 
-    public float getRandomTexture(int x,int y){
-        return (float)((noise.eval(x,y)+1)/2);
+    public boolean isKelpStart(float x,float y){
+        return noise.eval(x*10,y*10)<(KELP_AMOUNT*2+1)-y*0.01 && getBlock(x,y+1).equals(Blocks.get("sand"));
     }
+
+    public int kelpHeight(float x,float y){
+        return (int) ( MAX_KELP_HEIGHT - ((noise.eval(x*10,y*10)+1)/2)*MAX_KELP_HEIGHT );
+    }
+
 
     public Block getBlock(float x,float y){
 
@@ -45,23 +49,16 @@ public class WorldGenerator {
                 return Blocks.get("sand");
             }
 
-
-            Block under=getBlock(x,y+1);
-            if ( noise.eval(x*10,0)<KELP_AMOUNT*2-1 && under==Blocks.get("sand")) {
+            if (isKelpStart(x,y)){
                 return Blocks.get("kelp");
-            }else if (under==Blocks.get("kelp")){
-                if  (noise.eval(x*10,y*10)<KELP_GROWTH*2-1 && y>this.terrainHeight(x)-MAX_KELP_HEIGHT && y>=2){
-                    return Blocks.get("kelp");
-                }else{
-                    return Blocks.get("kelp_top");
-                }
-            }else if ( noise.eval(x*10,y*10)<CORAL_AMOUNT*2-1 && under==Blocks.get("stone")) {
-                return Blocks.get("coral");
             }
-
 
             return Blocks.get("water");
         }
         return Blocks.get("air");
+    }
+
+    public float getRandomTexture(int x,int y){
+        return (float)((noise.eval(x,y)+1)/2);
     }
 }

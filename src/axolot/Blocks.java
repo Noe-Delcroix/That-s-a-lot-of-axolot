@@ -13,47 +13,57 @@ public class Blocks {
     public static void init(Main main){
         blocks=new HashMap<String,Block>();
 
-        List<Texture> textures=new ArrayList<Texture>();
-        Texture texture;
-
         String path="ressources"+ File.separator+"blocks"+File.separator;
+        Block b;
 
-        blocks.put("air",new Block(false,"air"));
-        Texture water=new Texture(main,path+"water"+".png");
-        //Texture water=new Texture(main,16,16,0,0,255,100);
-        blocks.put("water",new Block(false,"water",water));
+        b=new Block(false,"air");
+        blocks.put("air",b);
 
-        textures=new ArrayList<Texture>();
-        textures.add(new Texture(main,path+"sand.png"));
-        textures.add(new Texture(main,path+"sand2.png"));
-        textures.add(new Texture(main,path+"sand3.png"));
-        textures.add(new Texture(main,path+"sand4.png"));
-        for(Texture t : textures)t.addTexture(main,water);
-        blocks.put("sand",new Block(true,"sand",textures));
-
-        textures=new ArrayList<Texture>();
-        textures.add(new Texture(main,path+"stone.png"));
-        textures.add(new Texture(main,path+"stone2.png"));
-        textures.add(new Texture(main,path+"stone3.png"));
-        textures.add(new Texture(main,path+"stone4.png"));
-        for(Texture t : textures)t.addTexture(main,water);
-        blocks.put("stone",new Block(true,"stone",textures));
+        b=new Block(false,"water");
+        blocks.put("water",b);
+        Texture waterOverlay=new Texture(main,path+"water"+".png");
+        b.addTexture(waterOverlay);
 
 
-        textures=new ArrayList<Texture>();
-        textures.add(new Texture(main,path+"kelp.png"));
-        textures.add(new Texture(main,path+"kelp2.png"));
-        textures.add(new Texture(main,path+"kelp3.png"));
-        for(Texture t : textures)t.addTexture(main,water);
-        blocks.put("kelp",new Block(true,"kelp",textures));
 
-        texture=new Texture(main,path+"kelp_top.png");
-        texture.addTexture(main,water);
-        blocks.put("kelp_top",new Block(false,"kelp_top",texture));
 
-        texture=new Texture(main,path+"coral.png");
-        texture.addTexture(main,water);
-        blocks.put("coral",new Block(false,"coral",texture));
+        b=new Block(true,"sand");
+        blocks.put("sand",b);
+        b.addTexture(new Texture(main,path+"sand.png"));
+        b.addTexture(new Texture(main,path+"sand2.png"));
+        b.addTexture(new Texture(main,path+"sand3.png"));
+        b.addTexture(new Texture(main,path+"sand4.png"));
+        for (Texture t : b.getTextures())t.addTexture(main,waterOverlay);
+
+        b=new Block(true,"stone");
+        blocks.put("stone",b);
+        b.addTexture(new Texture(main,path+"stone.png"));
+        b.addTexture(new Texture(main,path+"stone2.png"));
+        b.addTexture(new Texture(main,path+"stone3.png"));
+        b.addTexture(new Texture(main,path+"stone4.png"));
+        for (Texture t : b.getTextures())t.addTexture(main,waterOverlay);
+
+        b=new Block(true,"kelp");
+        blocks.put("kelp",b);
+        b.addTexture(new Texture(main,path+"kelp.png"));
+        b.addTexture(new Texture(main,path+"kelp2.png"));
+        b.addTexture(new Texture(main,path+"kelp3.png"));
+        for (Texture t : b.getTextures())t.addTexture(main,waterOverlay);
+
+        b=new Block(false,"kelp_top");
+        blocks.put("kelp_top",b);
+        b.addTexture(new Texture(main,path+"kelp_top.png"));
+        for (Texture t : b.getTextures())t.addTexture(main,waterOverlay);
+
+        b=new Block(false,"coral");
+        blocks.put("coral",b);
+        b.addTexture(new Texture(main,path+"coral.png"));
+        b.addTexture(new Texture(main,path+"coral2.png"));
+        b.addTexture(new Texture(main,path+"coral3.png"));
+        b.addTexture(new Texture(main,path+"coral4.png"));
+        b.addTexture(new Texture(main,path+"coral5.png"));
+        for (Texture t : b.getTextures())t.addTexture(main,waterOverlay);
+
     }
 
     public static Block get(String id){
