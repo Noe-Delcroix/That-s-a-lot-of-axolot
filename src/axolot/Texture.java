@@ -15,13 +15,24 @@ public class Texture extends PGraphics {
         image=main.loadImage(path);
     }
 
+    public Texture(Main main,int width,int height, int r, int g, int b,int a){
+        System.out.println("creating texture with size "+width+"x"+height);
+
+        PGraphics fusion= main.createGraphics(width,height);
+        fusion.beginDraw();
+        fusion.background(r,g,b,a);
+        fusion.endDraw();
+
+        this.image=(PImage)fusion;
+    }
+
     public void addTexture(Main main,Texture other){
 
         PGraphics fusion= main.createGraphics(Math.max(this.image.width, other.getImg().width), Math.max(this.image.height, other.getImg().height));
 
         fusion.beginDraw();
-        fusion.image(this.image,0,0,this.image.width,this.image.height);
-        fusion.image(other.getImg(),0,0,other.getImg().width,other.getImg().height);
+        fusion.image(this.image,0,0,fusion.width,fusion.height);
+        fusion.image(other.getImg(),0,0,fusion.width,fusion.height);
         fusion.endDraw();
         this.image=(PImage)fusion;
     }

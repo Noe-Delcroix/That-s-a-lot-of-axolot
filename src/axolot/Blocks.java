@@ -19,6 +19,7 @@ public class Blocks {
 
         blocks.put("air",new Block(false));
         Texture water=new Texture(main,path+"water"+".png");
+        //Texture water=new Texture(main,16,16,0,0,255,100);
         blocks.put("water",new Block(false,water));
 
         textures=new ArrayList<Texture>();
