@@ -37,6 +37,10 @@ public class Blocks {
         textures.add(new Texture(main,path+"stone4.png"));
         for(Texture texture : textures)texture.addTexture(main,water);
         blocks.put("stone",new Block(true,textures));
+
+
+        blocks.put("kelp",new Block(false,new Texture(main,1,1,0,200,0,255)));
+        blocks.put("kelp_top",new Block(false,new Texture(main,1,1,0,150,0,255)));
     }
 
     public static Block get(String id){

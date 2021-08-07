@@ -14,7 +14,7 @@ public class World extends PGraphics{
     private Texture background;
 
     public World(Main main){
-        generator=new WorldGenerator(30,5,20);
+        generator=new WorldGenerator();
         player=new Player(0,0);
 
         background=new Texture(main,"ressources"+ File.separator+"background.png");
