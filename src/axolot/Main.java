@@ -55,5 +55,4 @@ public class Main extends PApplet {
     public void mouseWheel(MouseEvent event) {
         world.getPlayer().changeZoom(event.getCount(),this);
     }
-
 }
